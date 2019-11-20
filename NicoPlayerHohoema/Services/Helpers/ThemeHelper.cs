@@ -42,7 +42,7 @@ namespace NicoPlayerHohoema.Services.Helpers
             return ElementTheme.Default;
         }
 
-        public static async Task ApplyAppThemeAsync(ElementTheme theme)
+        public static async Task ApplyAppThemeAsync(ElementTheme theme)    //App theme can be default (following Windows 10 system theme), light and dark
         {
             foreach (var view in CoreApplication.Views)
             {
@@ -56,7 +56,7 @@ namespace NicoPlayerHohoema.Services.Helpers
             }
         }
 
-        public static ElementTheme GetActualTheme()    
+        public static ElementTheme GetActualAppTheme()    //Get the "actual" (light or dark) app theme
         {
             ElementTheme theme = LoadThemeFromSettings();
 
@@ -66,13 +66,13 @@ namespace NicoPlayerHohoema.Services.Helpers
             }
             else
             {
-                if (uiSettings.GetColorValue(UIColorType.Background).ToString() == "#FF000000")
+                if (uiSettings.GetColorValue(UIColorType.Background).ToString() == "#FF000000")    //Check if Windows 10 is in dark theme
                 {
-                    return ElementTheme.Dark;
+                    return ElementTheme.Dark;    //If the app theme is set to "default" and Windows 10's is in dark theme, then the app will look "dark"
                 }
                 else 
                 {
-                    return ElementTheme.Light;
+                    return ElementTheme.Light;    //If the app theme is set to "default" and Windows 10's is in light theme, then the app will look "light"
                 }
             }
         }
@@ -80,22 +80,22 @@ namespace NicoPlayerHohoema.Services.Helpers
         public static void InitializeTitleBarColor()
         {
             ApplyTitleBarColor();
-            uiSettings.ColorValuesChanged += UISettings_ColorValuesChanged;
+            uiSettings.ColorValuesChanged += UISettings_ColorValuesChanged;    //When app theme is "default" and Windows 10's system theme is changed, change title bar color
         }
 
-        private static void UISettings_ColorValuesChanged(UISettings sender, object args)
+        private static async void UISettings_ColorValuesChanged(UISettings sender, object args)    //This event may be fired from a non-UI thread...
         {
             if (LoadThemeFromSettings() == ElementTheme.Default)
             {
-                ApplyTitleBarColor();
+                await CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, ApplyTitleBarColor);    //...So use a dispathcer to do UI-related things
             }
         }
 
-        public static void ApplyTitleBarColor()
+        public static void ApplyTitleBarColor()    //Change title bar color according to the "actual" app theme
         {
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
 
-            if (GetActualTheme() == ElementTheme.Light)
+            if (GetActualAppTheme() == ElementTheme.Light)
             {
                 titleBar.ButtonBackgroundColor = Colors.Transparent;
                 titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
