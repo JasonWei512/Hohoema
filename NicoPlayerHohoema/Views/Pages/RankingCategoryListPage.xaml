@@ -137,7 +137,7 @@
               <DataTemplate>
                 <Border>
                   <HyperlinkButton FontSize="18"
-                                 Foreground="{StaticResource ApplicationHeaderForegroundThemeBrush}"
+                                 Foreground="{ThemeResource ApplicationHeaderForegroundThemeBrush}"
                                  Command="{Binding ElementName=ContentLayout, Path=DataContext.OpenRankingPageCommand}"
                                  CommandParameter="{Binding}"
                                  Width="128"

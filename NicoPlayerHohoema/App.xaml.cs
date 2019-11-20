@@ -36,6 +36,7 @@ using Prism;
 using Prism.Navigation;
 using Prism.Services;
 using NicoPlayerHohoema.Models.LocalMylist;
+using NicoPlayerHohoema.Services.Helpers;
 
 namespace NicoPlayerHohoema
 {
@@ -68,10 +69,6 @@ namespace NicoPlayerHohoema
             // 基本カーソル移動で必要なときだけポインターを出現させる
             this.RequiresPointerMode = Windows.UI.Xaml.ApplicationRequiresPointerMode.WhenRequested;
 
-            // テーマ設定
-            // ThemeResourceの切り替えはアプリの再起動が必要
-            RequestedTheme = GetTheme();
-            
             Microsoft.Toolkit.Uwp.UI.ImageCache.Instance.CacheDuration = TimeSpan.FromDays(7);
             Microsoft.Toolkit.Uwp.UI.ImageCache.Instance.MaxMemoryCacheCount = 1000;
             Microsoft.Toolkit.Uwp.UI.ImageCache.Instance.RetryCount = 3;
@@ -352,25 +349,6 @@ namespace NicoPlayerHohoema
                 {
                     var coreApp = CoreApplication.GetCurrentView();
                     coreApp.TitleBar.ExtendViewIntoTitleBar = true;
-
-                    var appView = ApplicationView.GetForCurrentView();
-                    appView.TitleBar.ButtonBackgroundColor = Colors.Transparent;
-                    appView.TitleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-
-                    if (RequestedTheme == ApplicationTheme.Light)
-                    {
-                        appView.TitleBar.ButtonForegroundColor = Colors.Black;
-                        appView.TitleBar.ButtonHoverBackgroundColor = Colors.DarkGray;
-                        appView.TitleBar.ButtonHoverForegroundColor = Colors.Black;
-                        appView.TitleBar.ButtonInactiveForegroundColor = Colors.Gray;
-                    }
-                    else
-                    {
-                        appView.TitleBar.ButtonForegroundColor = Colors.White;
-                        appView.TitleBar.ButtonHoverBackgroundColor = Colors.DimGray;
-                        appView.TitleBar.ButtonHoverForegroundColor = Colors.White;
-                        appView.TitleBar.ButtonInactiveForegroundColor = Colors.DarkGray;
-                    }
                 }
 
                 // 
@@ -383,6 +361,10 @@ namespace NicoPlayerHohoema
                 var ns = Prism.Navigation.NavigationService.Create(frame, Window.Current.CoreWindow, /*Gesture.Back, */ Gesture.Forward, Gesture.Refresh);
 
                 Container.GetContainer().RegisterInstance(ns);
+
+                // テーマ設定
+                (layout as FrameworkElement).RequestedTheme = ThemeHelper.LoadThemeFromSettings();
+                ThemeHelper.InitializeTitleBarColor();
 
                 Window.Current.Content = layout;
 
@@ -825,40 +807,6 @@ namespace NicoPlayerHohoema
             };
         }
 
-
-#endregion
-
-
-#region Theme 
-
-
-        const string ThemeTypeKey = "Theme";
-
-        public static void SetTheme(ApplicationTheme theme)
-        {
-            if (ApplicationData.Current.LocalSettings.Values.ContainsKey(ThemeTypeKey))
-            {
-                ApplicationData.Current.LocalSettings.Values[ThemeTypeKey] = theme.ToString();
-            }
-            else
-            {
-                ApplicationData.Current.LocalSettings.Values.Add(ThemeTypeKey, theme.ToString());
-            }
-        }
-
-        public static ApplicationTheme GetTheme()
-        {
-            try
-            {
-                if (ApplicationData.Current.LocalSettings.Values.ContainsKey(ThemeTypeKey))
-                {
-                    return (ApplicationTheme)Enum.Parse(typeof(ApplicationTheme), (string)ApplicationData.Current.LocalSettings.Values[ThemeTypeKey]);
-                }
-            }
-            catch { }
-
-            return ApplicationTheme.Dark;
-        }
 
 #endregion
 

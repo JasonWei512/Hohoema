@@ -1,6 +1,7 @@
 ﻿using Microsoft.Services.Store.Engagement;
 using NicoPlayerHohoema.Models;
 using NicoPlayerHohoema.Services;
+using NicoPlayerHohoema.Services.Helpers;
 using NicoPlayerHohoema.Services.Page;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -93,22 +94,24 @@ namespace NicoPlayerHohoema.ViewModels
 
             // アピアランス
 
-            var currentTheme = App.GetTheme();
+            ElementTheme currentTheme = ThemeHelper.LoadThemeFromSettings();
             SelectedApplicationTheme = new ReactiveProperty<string>(currentTheme.ToString(), mode: ReactivePropertyMode.DistinctUntilChanged);
 
-            SelectedApplicationTheme.Subscribe(x =>
+            SelectedApplicationTheme.Subscribe(async x =>
             {
-                var type = (ApplicationTheme)Enum.Parse(typeof(ApplicationTheme), x);
-                App.SetTheme(type);
+                ElementTheme theme = (ElementTheme)Enum.Parse(typeof(ElementTheme), x);
+                ThemeHelper.SaveThemeToSettings(theme);
+                await ThemeHelper.ApplyAppThemeAsync(theme);
+                ThemeHelper.ApplyTitleBarColor();
 
                 // 一度だけトースト通知
-                if (!ThemeChanged)
-                {
-                    toastService.ShowToast("Hohoemaを再起動するとテーマが適用されます。", "");
-                }
+                //if (!ThemeChanged)
+                //{
+                //    //toastService.ShowToast("Hohoemaを再起動するとテーマが適用されます。", "");
+                //}
 
-                ThemeChanged = true;
-                RaisePropertyChanged(nameof(ThemeChanged));
+                //ThemeChanged = true;
+                //RaisePropertyChanged(nameof(ThemeChanged));
             });
 
             IsTVModeEnable = AppearanceSettings
@@ -205,12 +208,12 @@ namespace NicoPlayerHohoema.ViewModels
 
         // アピアランス
         public static List<string> ThemeList { get; private set; } =
-            Enum.GetValues(typeof(ApplicationTheme)).Cast<ApplicationTheme>()
+            Enum.GetValues(typeof(ElementTheme)).Cast<ElementTheme>()
             .Select(x => x.ToString())
             .ToList();
 
         public ReactiveProperty<string> SelectedApplicationTheme { get; private set; }
-        public static bool ThemeChanged { get; private set; } = false;
+        //public static bool ThemeChanged { get; private set; } = false;
 
         public ReactiveProperty<bool> IsTVModeEnable { get; private set; }
         public bool IsXbox { get; private set; }

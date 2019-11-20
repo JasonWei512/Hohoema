@@ -269,11 +269,11 @@
                                 </ComboBox>
                             </StackPanel>
 
-                            <TextBlock Text="※テーマの適用にはアプリを再起動してください" 
+                            <!--<TextBlock Text="※テーマの適用にはアプリを再起動してください" 
                                    Foreground="Red"
                                    Margin="0 8"
                                    Visibility="{Binding ThemeChanged, Converter={StaticResource BooleanToVisibility}}"
-                                   />
+                                   />-->
 
 
 
