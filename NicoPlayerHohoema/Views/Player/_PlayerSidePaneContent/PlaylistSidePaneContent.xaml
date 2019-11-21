@@ -198,7 +198,7 @@
 
                                     <Border VerticalAlignment="Bottom">
                                         <Border.Background>
-                                            <SolidColorBrush Color="{StaticResource SystemAltMediumColor}" />
+                                            <SolidColorBrush Color="{ThemeResource SystemAltMediumColor}" />
                                         </Border.Background>
                                         
                                         <TextBlock Text="{Binding VideoTitle}"
@@ -256,7 +256,7 @@
                 uwpext:ListViewBase.Command="{Binding HohoemaPlaylist.PlayCommand}"
                 IsItemClickEnabled="True"
                 x:Name="PlaylistItemsListView"
-                Background="{StaticResource HohoemaPlayerBackgroundBrush}"
+                Background="{ThemeResource HohoemaPlayerBackgroundBrush}"
                 IsFocusEngagementEnabled="True"
                 >
                 <ListView.ItemContainerStyle>

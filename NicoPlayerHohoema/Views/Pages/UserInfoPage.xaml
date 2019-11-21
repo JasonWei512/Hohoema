@@ -249,7 +249,7 @@
                                 <HyperlinkButton Command="{Binding PageManager.OpenVideoListPageCommand}"
                                         CommandParameter="{Binding}"
                                         IsEnabled="{Binding HasOwnerVideo}"
-                                        Foreground="{StaticResource ApplicationForegroundThemeBrush}"
+                                        Foreground="{ThemeResource ApplicationForegroundThemeBrush}"
                                         Margin="0 8"
                                         >
                                     <TextBlock Style="{StaticResource SubtitleTextBlockStyle}"
@@ -319,7 +319,7 @@
                             <!-- Mylist -->
 
                             <HyperlinkButton Command="{Binding OpenUserMylistPageCommand}"
-                                             Foreground="{StaticResource ApplicationForegroundThemeBrush}"
+                                             Foreground="{ThemeResource ApplicationForegroundThemeBrush}"
                                              Margin="0 8"
                                              x:Name="UserMylistTitleLayout"
                                         >

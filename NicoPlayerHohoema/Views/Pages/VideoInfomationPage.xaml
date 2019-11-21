@@ -189,15 +189,15 @@
                             <StackPanel Orientation="Horizontal" Margin="0 0 0 0">
 
                                 <TextBlock Margin="0 0 8 0">
-                                    <Run Text="再生:" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                    <Run Text="再生:" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" />
                                     <Run Text="{Binding ViewCount, Converter={StaticResource ToUserFriendlyNumber}}" />
                                 </TextBlock>
                                 <TextBlock Margin="0 0 8 0">
-                                    <Run Text="コメント:" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                    <Run Text="コメント:" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" />
                                     <Run Text="{Binding CommentCount, Converter={StaticResource ToUserFriendlyNumber}}" />
                                 </TextBlock>
                                 <TextBlock Margin="0 0 8 0">
-                                    <Run Text="マイリスト:" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                    <Run Text="マイリスト:" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" />
                                     <Run Text="{Binding MylistCount, Converter={StaticResource ToUserFriendlyNumber}}" />
                                 </TextBlock>
                             </StackPanel>
@@ -205,7 +205,7 @@
                             <TextBlock 
                                    Margin="0 8 0 0"
                                    >
-                                    <Run Text="投稿日:" Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}" />
+                                    <Run Text="投稿日:" Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" />
                                     <Run Text="{Binding SubmitDate}" />
                             </TextBlock>
 

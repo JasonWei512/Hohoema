@@ -305,7 +305,7 @@
                                 ScrollViewer.VerticalScrollMode="Disabled"
                                 />
 
-                    <Border BorderBrush="{StaticResource ApplicationSecondaryForegroundThemeBrush}" Opacity="0.3"
+                    <Border BorderBrush="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" Opacity="0.3"
                                 BorderThickness="0 1 0 0"
                                 VerticalAlignment="Center"
                                 Margin="16 8"
@@ -336,7 +336,7 @@
                                 />
 
                    
-                    <Border BorderBrush="{StaticResource ApplicationSecondaryForegroundThemeBrush}" Opacity="0.3"
+                    <Border BorderBrush="{ThemeResource ApplicationSecondaryForegroundThemeBrush}" Opacity="0.3"
                                 BorderThickness="0 1 0 0"
                                 VerticalAlignment="Center"
                                 Margin="16 8"
@@ -464,7 +464,7 @@
                         DisplayMode="Inline"
                         IsPaneOpen="{Binding IsOpenPane.Value, Mode=TwoWay}"
                                IsTabStop="False"
-                               PaneBackground="{StaticResource MenuBackgroundBrush}"
+                               PaneBackground="{ThemeResource MenuBackgroundBrush}"
                         >
                         <SplitView.Pane>
 
@@ -826,7 +826,7 @@
                                                 </Button>
 
 
-                                                <Border Background="{StaticResource MenuBackgroundBrush}"
+                                                <Border Background="{ThemeResource MenuBackgroundBrush}"
                                                         x:Name="Mobile_BlindSearchTextBoxBorder"
                                                         Visibility="Collapsed"
                                                         />
@@ -1059,7 +1059,7 @@
                                 <Setter Target="MenuTitleText.Style" Value="{StaticResource BodyTextBlockStyle}" />
                                 <Setter Target="MenuTitleText.Margin" Value="16 0 16 0" />
 
-                                <Setter Target="TopMenu.Background" Value="{StaticResource MenuBackgroundBrush}" />
+                                <Setter Target="TopMenu.Background" Value="{ThemeResource MenuBackgroundBrush}" />
 
                                 <Setter Target="Mobile_ShowSearchButton.Visibility" Value="Visible" />
 

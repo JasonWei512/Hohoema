@@ -209,7 +209,7 @@
                                  />
                     
                     <iconPack:PackIconMaterial Kind="Check" Height="48" Width="48" Margin="0 0 16 0"
-                                               Foreground="{StaticResource SystemControlHighlightAccentBrush}"
+                                               Foreground="{ThemeResource SystemControlHighlightAccentBrush}"
                                                controls:DockPanel.Dock="Left"
                                                />
 

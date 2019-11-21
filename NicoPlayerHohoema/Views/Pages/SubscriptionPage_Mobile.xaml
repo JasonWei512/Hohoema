@@ -229,7 +229,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Border Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Opacity="0.3"
+            <Border Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Opacity="0.3"
                     IsHitTestVisible="True"
                     IsTapEnabled="True"
                     x:Name="IndivisualItemViewBackground"
@@ -242,7 +242,7 @@
                 </i:Interaction.Behaviors>
             </Border>
 
-            <Border Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+            <Border Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                     x:Name="IndivisualItemViewContent"
                     Grid.ColumnSpan="1"
                     Grid.Column="1"

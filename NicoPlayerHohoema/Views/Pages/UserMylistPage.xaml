@@ -101,7 +101,7 @@
 
                         <Grid x:Name="HeaderLayout"
                           VerticalAlignment="Top"
-                              Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                              Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                           >
                             <StackPanel>
                                 <toolkit:DockPanel >

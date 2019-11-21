@@ -351,6 +351,9 @@ namespace NicoPlayerHohoema
                     coreApp.TitleBar.ExtendViewIntoTitleBar = true;
                 }
 
+                //Set title bar color, and change title bar color when theme changes
+                ThemeHelper.InitializeTitleBarColor();
+
                 // 
                 var cacheSettings = Container.Resolve<CacheSettings>();
                 Resources["IsCacheEnabled"] = cacheSettings.IsEnableCache;
@@ -362,9 +365,8 @@ namespace NicoPlayerHohoema
 
                 Container.GetContainer().RegisterInstance(ns);
 
-                // テーマ設定
+                // テーマ設定。Change the theme of shell before assign it to Window.Current.Content
                 (layout as FrameworkElement).RequestedTheme = ThemeHelper.LoadThemeFromSettings();
-                ThemeHelper.InitializeTitleBarColor();
 
                 Window.Current.Content = layout;
 

@@ -201,7 +201,7 @@
                                 uwpext:ListViewBase.Command="{Binding HohoemaPlaylist.PlayCommand}"
                                 IsItemClickEnabled="True"
                                 x:Name="VideoOwnerOtherVideosListView"
-                                Background="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                Background="{ThemeResource HohoemaPlayerBackgroundBrush}"
                                   ItemTemplate="{StaticResource MiniListItemTemplate}"
                                   IsTabStop="False"
                                 >
@@ -228,7 +228,7 @@
                                 uwpext:ListViewBase.Command="{Binding PageManager.OpenPageCommand}"
                                 IsItemClickEnabled="True"
                                 x:Name="VideoOwnerMylistsListView"
-                                Background="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                Background="{ThemeResource HohoemaPlayerBackgroundBrush}"
                                   IsTabStop="False"
                                 >
                             <ListView.ItemContainerStyle>
@@ -260,7 +260,7 @@
                                 uwpext:ListViewBase.Command="{Binding HohoemaPlaylist.PlayCommand}"
                                 IsItemClickEnabled="True"
                                 x:Name="PlaylistItemsListView"
-                                Background="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                Background="{ThemeResource HohoemaPlayerBackgroundBrush}"
                                 ItemTemplate="{StaticResource MiniListItemTemplate}"
                                   IsTabStop="False"
 

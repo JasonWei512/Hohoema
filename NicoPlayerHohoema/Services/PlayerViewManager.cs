@@ -29,6 +29,7 @@ using Prism.Navigation;
 using Prism.Unity;
 using Windows.UI.Xaml.Media.Animation;
 using Prism.Services;
+using NicoPlayerHohoema.Services.Helpers;
 
 namespace NicoPlayerHohoema.Services
 {
@@ -394,6 +395,9 @@ namespace NicoPlayerHohoema.Services
                     ns = NavigationService.Create(content.Frame, playerView.CoreWindow);
 
                     vm = content.DataContext as HohoemaSecondaryViewFrameViewModel;
+
+                    // テーマ設定。Change the theme of SecondaryViewFrame before assign it to Window.Current.Content
+                    (content as FrameworkElement).RequestedTheme = ThemeHelper.LoadThemeFromSettings();
 
                     Window.Current.Content = content;
 

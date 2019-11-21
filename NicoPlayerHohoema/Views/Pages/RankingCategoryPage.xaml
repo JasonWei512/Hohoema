@@ -134,7 +134,7 @@
                   <HyperlinkButton 
                                              Command="{Binding PageManager.OpenPageCommand}"
                                              CommandParameter="RankingCategoryList"
-                                             Foreground="{StaticResource ApplicationForegroundThemeBrush}"
+                                             Foreground="{ThemeResource ApplicationForegroundThemeBrush}"
                                             VerticalAlignment="Center"
                                             Opacity="0.7"
                                             Margin="16 0 0 0"

@@ -54,7 +54,7 @@
 
                         <TextBlock uwpcontrols:DockPanel.Dock="Bottom"
                                 Text="{Binding OptionalLabel}"
-                               Foreground="{StaticResource ApplicationSecondaryForegroundThemeBrush}"
+                               Foreground="{ThemeResource ApplicationSecondaryForegroundThemeBrush}"
                                FontSize="12"
                                />
 

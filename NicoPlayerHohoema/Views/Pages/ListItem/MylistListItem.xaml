@@ -13,7 +13,7 @@
 
     <Grid Width="180"
             Height="140"
-                Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
             >
 
         <VisualStateManager.VisualStateGroups>

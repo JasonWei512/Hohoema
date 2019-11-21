@@ -11,7 +11,7 @@
     DataContext="{x:Null}"
     mc:Ignorable="d">
 
-    <Grid Background="{StaticResource HohoemaThemeBackgroundBrush}">
+    <Grid Background="{ThemeResource HohoemaThemeBackgroundBrush}">
 
 
         <Canvas HorizontalAlignment="Stretch"

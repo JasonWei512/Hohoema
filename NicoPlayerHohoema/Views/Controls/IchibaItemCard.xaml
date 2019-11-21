@@ -28,14 +28,14 @@
                                                         Margin="0 8"
                                                         >
                     <Border.Background>
-                        <SolidColorBrush Color="{StaticResource SystemAltMediumColor}" />
+                        <SolidColorBrush Color="{ThemeResource SystemAltMediumColor}" />
                     </Border.Background>
                     <TextBlock Text="{Binding Title}" 
                                                                TextWrapping="Wrap"
                                                                FontSize="12"
                                                                >
                         <TextBlock.Foreground>
-                            <SolidColorBrush Color="{StaticResource SystemBaseMediumHighColor}" />
+                            <SolidColorBrush Color="{ThemeResource SystemBaseMediumHighColor}" />
                         </TextBlock.Foreground>
                     </TextBlock>
                 </Border>

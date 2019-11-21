@@ -253,7 +253,7 @@
                 
     </UserControl.Resources>
     
-    <Grid x:Name="LayoutRoot" Background="{StaticResource AppBarBorderThemeBrush}">
+    <Grid x:Name="LayoutRoot" Background="{ThemeResource AppBarBorderThemeBrush}">
         
         <VisualStateManager.VisualStateGroups>
 
@@ -1230,7 +1230,7 @@
                                 <!-- プレイリスト 操作 -->
                                 <StackPanel toolkit:DockPanel.Dock="Top" >
 
-                                    <Border Background="{StaticResource HohoemaPlayerBackgroundBrush}">
+                                    <Border Background="{ThemeResource HohoemaPlayerBackgroundBrush}">
                                         <toolkit:DockPanel
                                             x:Name="UIControlHeaderLayout"
                                             Opacity="0.8"
@@ -1492,7 +1492,7 @@
                                     
 
                                     <StackPanel x:Name="UIControlContentLayout"
-                                                Background="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                                Background="{ThemeResource HohoemaPlayerBackgroundBrush}"
                                                 >
 
 
@@ -1987,7 +1987,7 @@
 
                                         <Border.Background>
                                             <LinearGradientBrush StartPoint="1, 1" EndPoint="1, 0">
-                                                <GradientStop Color="{Binding Source={StaticResource SystemAltMediumColor}, Converter={StaticResource ToTransparentColor}}" Offset="0.0" />
+                                                <GradientStop Color="{Binding Source={ThemeResource SystemAltMediumColor}, Converter={StaticResource ToTransparentColor}}" Offset="0.0" />
                                                 <GradientStop Color="{ThemeResource SystemAltMediumColor}" Offset="1.0" />
                                             </LinearGradientBrush>
                                         </Border.Background>
@@ -2000,7 +2000,7 @@
                                             >
                                         <Border.Background>
                                             <LinearGradientBrush x:Name="ControlPanelBackgroundBrush" StartPoint="1, 0" EndPoint="1, 1">
-                                                <GradientStop Color="{Binding Source={StaticResource SystemAltMediumColor}, Converter={StaticResource ToTransparentColor}}" Offset="0.0" x:Name="GradientStop1"/>
+                                                <GradientStop Color="{Binding Source={ThemeResource SystemAltMediumColor}, Converter={StaticResource ToTransparentColor}}" Offset="0.0" x:Name="GradientStop1"/>
                                                 <GradientStop Color="{ThemeResource SystemAltMediumColor}" Offset="1.0" x:Name="GradientStop2" />
                                             </LinearGradientBrush>
                                         </Border.Background>
@@ -2023,7 +2023,7 @@
                                                 Height="120"
                                                 Command="{Binding OpenPreviousPlaylistItemCommand}"
                                                 IsEnabled="{Binding PlaylistCanGoBack.Value}"
-                                                BorderBrush="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                                BorderBrush="{ThemeResource HohoemaPlayerBackgroundBrush}"
                                                 BorderThickness="0 1 1 1"
                                             >
                                             <TextBlock FontFamily="Segoe MDL2 Assets" 
@@ -2042,7 +2042,7 @@
                                                 Height="120"
                                                 Command="{Binding OpenNextPlaylistItemCommand}"
                                                 IsEnabled="{Binding PlaylistCanGoNext.Value}"
-                                                BorderBrush="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                                BorderBrush="{ThemeResource HohoemaPlayerBackgroundBrush}"
                                                 BorderThickness="1 1 0 1"
                                                 >
                                             <TextBlock FontFamily="Segoe MDL2 Assets" 
@@ -2059,7 +2059,7 @@
                                     
                                     <Grid x:Name="RecommendActionLayout"
                                           Visibility="{Binding EndPlayRecommendAction, Converter={StaticResource NotNullToVisibility}}"
-                                                           Background="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                                           Background="{ThemeResource HohoemaPlayerBackgroundBrush}"
                                                            >
 
                                         
@@ -2215,7 +2215,7 @@
                             <!-- Compact Overlay UIControl -->
                             <Grid x:Name="CompactOverlayUIControl"
                                   Visibility="Collapsed"
-                                  Background="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                  Background="{ThemeResource HohoemaPlayerBackgroundBrush}"
                                   >
 
                                 <Grid>
@@ -2235,7 +2235,7 @@
                                     
                                     <Border toolkit:DockPanel.Dock="Top" 
                                             Height="32"
-                                            Background="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                            Background="{ThemeResource HohoemaPlayerBackgroundBrush}"
                                             >
                                         <TextBlock Text="{Binding VideoTitle}" 
                                                    Style="{StaticResource CaptionTextBlockStyle}"
@@ -2437,7 +2437,7 @@
                                                 Height="80"
                                                 Command="{Binding OpenPreviousPlaylistItemCommand}"
                                                 IsEnabled="{Binding PlaylistCanGoBack.Value}"
-                                                BorderBrush="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                                BorderBrush="{ThemeResource HohoemaPlayerBackgroundBrush}"
                                                 BorderThickness="0 1 1 1"
                                             >
                                         <TextBlock FontFamily="Segoe MDL2 Assets" 
@@ -2458,7 +2458,7 @@
                                                 Height="80"
                                                 Command="{Binding OpenNextPlaylistItemCommand}"
                                                 IsEnabled="{Binding PlaylistCanGoNext.Value}"
-                                                BorderBrush="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                                BorderBrush="{ThemeResource HohoemaPlayerBackgroundBrush}"
                                                 BorderThickness="1 1 0 1"
                                                 >
                                         <TextBlock FontFamily="Segoe MDL2 Assets" 
@@ -2589,7 +2589,7 @@
                                   VerticalAlignment="Top"
                                   Margin="32 64"
                                   Visibility="{Binding IsNotSupportVideoType, Converter={StaticResource BooleanToVisibility}}"
-                                  Background="{StaticResource AppBarItemPointerOverBackgroundThemeBrush}"
+                                  Background="{ThemeResource AppBarItemPointerOverBackgroundThemeBrush}"
                                 Padding="16"
                           >
 

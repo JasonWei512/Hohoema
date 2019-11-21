@@ -174,7 +174,7 @@
             <Setter Property="Padding" Value="0" />
             <Setter Property="Margin" Value="0 0 8 8" />
             <Setter Property="MinWidth" Value="140" />
-            <Setter Property="BorderBrush" Value="{StaticResource SystemBaseLowColor}" />
+            <Setter Property="BorderBrush" Value="{ThemeResource SystemBaseLowColor}" />
             <Setter Property="BorderThickness" Value="1" />
             
           </Style>

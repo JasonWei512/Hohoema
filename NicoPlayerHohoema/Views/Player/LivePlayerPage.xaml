@@ -1333,7 +1333,7 @@
 
                                         <Border.Background>
                                             <LinearGradientBrush StartPoint="1, 1" EndPoint="1, 0">
-                                                <GradientStop Color="{Binding Source={StaticResource SystemAltMediumColor}, Converter={StaticResource ToTransparentColor}}" Offset="0.0" />
+                                                <GradientStop Color="{Binding Source={ThemeResource SystemAltMediumColor}, Converter={StaticResource ToTransparentColor}}" Offset="0.0" />
                                                 <GradientStop Color="{ThemeResource SystemAltMediumColor}" Offset="1.0" />
                                             </LinearGradientBrush>
                                         </Border.Background>
@@ -1355,7 +1355,7 @@
                                     <Border Height="48">
                                         <Border.Background>
                                             <LinearGradientBrush x:Name="ControlPanelBackgroundBrush" StartPoint="1, 0" EndPoint="1, 1">
-                                                <GradientStop Color="{Binding Source={StaticResource SystemAltMediumColor}, Converter={StaticResource ToTransparentColor}}" Offset="0.0" x:Name="GradientStop1"/>
+                                                <GradientStop Color="{Binding Source={ThemeResource SystemAltMediumColor}, Converter={StaticResource ToTransparentColor}}" Offset="0.0" x:Name="GradientStop1"/>
                                                 <GradientStop Color="{ThemeResource SystemAltMediumColor}" Offset="1.0" x:Name="GradientStop2" />
                                             </LinearGradientBrush>
                                         </Border.Background>
@@ -1386,7 +1386,7 @@
 
 
                                     <!-- タイムシフト時のシークバー -->
-                                    <Border Background="{StaticResource HohoemaPlayerBackgroundBrush}"
+                                    <Border Background="{ThemeResource HohoemaPlayerBackgroundBrush}"
 >
                                         <Slider x:Name="SeekBarSlider"
                                                 Minimum="0.0" 
@@ -1859,7 +1859,7 @@
                                                 Visibility="Collapsed"
                                                 >
                                             <Border.Background>
-                                                <SolidColorBrush Color="{StaticResource SystemAltLowColor}"
+                                                <SolidColorBrush Color="{ThemeResource SystemAltLowColor}"
                                                                  
                                                                  />
                                             </Border.Background>
@@ -1896,7 +1896,7 @@
                                                Visibility="Collapsed"
                                   >
                             <Grid.Background>
-                                <SolidColorBrush Color="{StaticResource SystemAltMediumColor}" />
+                                <SolidColorBrush Color="{ThemeResource SystemAltMediumColor}" />
                             </Grid.Background>
 
                             <Grid>
@@ -1915,7 +1915,7 @@
                                             Height="32"
                                             >
                                     <Border.Background>
-                                        <SolidColorBrush Color="{StaticResource SystemAltMediumColor}" />
+                                        <SolidColorBrush Color="{ThemeResource SystemAltMediumColor}" />
                                     </Border.Background>
                                 </Border>
 

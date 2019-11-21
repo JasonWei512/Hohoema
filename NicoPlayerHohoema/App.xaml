@@ -36,7 +36,7 @@
 
             <Color x:Key="HohoemaThemeColor" >#F8B400</Color>
             <SolidColorBrush x:Key="HohoemaThemeBackgroundBrush"
-                             Color="{StaticResource HohoemaThemeColor}"
+                             Color="{ThemeResource HohoemaThemeColor}"
                              >
             </SolidColorBrush>
             <SolidColorBrush x:Key="HohoemaPlayerBackgroundBrush"
@@ -224,7 +224,7 @@
                                  EndPoint="0, 1"
                                  >
 
-                        <GradientStop Color="{StaticResource SystemAltMediumHighColor}" Offset="0.0" />
+                        <GradientStop Color="{ThemeResource SystemAltMediumHighColor}" Offset="0.0" />
                         <GradientStop Color="#00FFFFFF" Offset="1.0" />
                     </LinearGradientBrush>
                 </ResourceDictionary>
@@ -237,7 +237,7 @@
                                  EndPoint="0, 1"
                                  >
 
-                        <GradientStop Color="{StaticResource SystemAltMediumHighColor}" Offset="0.0" />
+                        <GradientStop Color="{ThemeResource SystemAltMediumHighColor}" Offset="0.0" />
                         <GradientStop Color="#00000000" Offset="1.0" />
                     </LinearGradientBrush>
 

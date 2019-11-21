@@ -204,7 +204,7 @@
                                 />
 
                             <HyperlinkButton Command="{Binding OpenCommunityVideoListPageCommand}"
-                                                     Foreground="{StaticResource ButtonForegroundThemeBrush}"
+                                                     Foreground="{ThemeResource ButtonForegroundThemeBrush}"
                                                      Margin="0 8"
                                         >
                                 <TextBlock Style="{StaticResource SubtitleTextBlockStyle}"
@@ -350,7 +350,7 @@
                   VerticalAlignment="Top"
                   >
 
-                <Border Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
+                <Border Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                         Opacity="0.75"
                         />
 

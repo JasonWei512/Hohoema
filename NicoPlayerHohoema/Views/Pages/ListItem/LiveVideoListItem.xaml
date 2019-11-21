@@ -150,10 +150,10 @@
                     <Setter Property="Padding" Value="8 4" />
                     <Setter Property="Background" >
                         <Setter.Value>
-                            <SolidColorBrush Color="{StaticResource SystemBaseHighColor}" Opacity="0.35" />
+                            <SolidColorBrush Color="{ThemeResource SystemBaseHighColor}" Opacity="0.35" />
                         </Setter.Value>
                     </Setter>
-                    <Setter Property="Foreground" Value="{StaticResource ApplicationPageBackgroundThemeBrush}" />
+                    <Setter Property="Foreground" Value="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
                     <Setter Property="Opacity" Value="1" />
                     <Setter Property="CornerRadius" Value="2" />
                 </Style>
