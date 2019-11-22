@@ -56,8 +56,8 @@ namespace NicoPlayerHohoema.ViewModels
             NicoLiveProvider nicoLiveProvider,
             DialogService dialogService,
             Services.HohoemaPlaylist hohoemaPlaylist,
-            ExternalAccessService externalAccessService
-            )
+            ExternalAccessService externalAccessService,
+            ThemeManagerService themeManagerService)
         {
             PageManager = pageManager;
             NiconicoSession = niconicoSession;
@@ -65,6 +65,7 @@ namespace NicoPlayerHohoema.ViewModels
             HohoemaDialogService = dialogService;
             HohoemaPlaylist = hohoemaPlaylist;
             ExternalAccessService = externalAccessService;
+            ThemeManagerService = themeManagerService;
             IsLoadFailed = new ReactiveProperty<bool>(false)
                .AddTo(_CompositeDisposable);
             LoadFailedMessage = new ReactiveProperty<string>()
@@ -163,6 +164,7 @@ namespace NicoPlayerHohoema.ViewModels
 
             IsShowDeleteTimeshiftButton = _IsTsPreserved;
 
+            ThemeManagerService.ActualAppThemeChanged += ThemeManagerService_ActualAppThemeChanged;
         }
 
 
@@ -710,6 +712,14 @@ namespace NicoPlayerHohoema.ViewModels
 
             return true;
         }
+
+        private ThemeManagerService ThemeManagerService;
+
+        private void ThemeManagerService_ActualAppThemeChanged(object sender, EventArgs e)
+        {
+            //TODO Regenerate HTML
+            throw new NotImplementedException("Not Implemented: Regenerate HTML when theme changed");
+        }
     }
 
     public enum LiveTagType
@@ -739,6 +749,6 @@ namespace NicoPlayerHohoema.ViewModels
         }
     }
 
-
+   
 
 }

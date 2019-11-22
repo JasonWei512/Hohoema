@@ -82,9 +82,11 @@ namespace NicoPlayerHohoema.Services
         public PlayerViewManager(
             IScheduler currentScheduler,
             INavigationService primaryViewPlayerNavigationService,
-            IEventAggregator eventAggregator
-            )
+            IEventAggregator eventAggregator,
+            ThemeManagerService themeManagerService)
         {
+            _ThemeManagerService = themeManagerService;
+
             CurrentView = ApplicationView.GetForCurrentView();
 
             if (IsMainView)
@@ -190,7 +192,7 @@ namespace NicoPlayerHohoema.Services
             }
         }
 
-
+        private ThemeManagerService _ThemeManagerService;
 
         public INavigationService ResolveSecondaryViewPlayerNavigationService()
         {
@@ -396,17 +398,15 @@ namespace NicoPlayerHohoema.Services
 
                     vm = content.DataContext as HohoemaSecondaryViewFrameViewModel;
 
-                    // テーマ設定。Change the theme of SecondaryViewFrame before assign it to Window.Current.Content
-                    (content as FrameworkElement).RequestedTheme = ThemeHelper.LoadThemeFromSettings();
+                    // テーマ設定
+                    _ThemeManagerService.ApplyTitleBarColorForCurrentWindow();    //Change the second window's title bar color
+                    (content as FrameworkElement).RequestedTheme = _ThemeManagerService.RequestedAppTheme;    //Change the second window's content's theme before assigning it to Window.Current.Content
 
                     Window.Current.Content = content;
 
                     id = ApplicationView.GetApplicationViewIdForWindow(playerView.CoreWindow);
 
                     view = ApplicationView.GetForCurrentView();
-
-                    view.TitleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-                    view.TitleBar.ButtonInactiveBackgroundColor = Windows.UI.Colors.Transparent;
 
                     Window.Current.Activate();
 

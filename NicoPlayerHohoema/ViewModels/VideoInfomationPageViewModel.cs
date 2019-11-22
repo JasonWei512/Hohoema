@@ -43,8 +43,8 @@ namespace NicoPlayerHohoema.ViewModels
             Services.DialogService dialogService,
             Services.ExternalAccessService externalAccessService,
             Commands.AddMylistCommand addMylistCommand,
-            Commands.Subscriptions.CreateSubscriptionGroupCommand createSubscriptionGroupCommand
-            )
+            Commands.Subscriptions.CreateSubscriptionGroupCommand createSubscriptionGroupCommand,
+            Services.ThemeManagerService themeManagerService)
         {
             NgSettings = ngSettings;
             NiconicoSession = niconicoSession;
@@ -63,6 +63,9 @@ namespace NicoPlayerHohoema.ViewModels
             CreateSubscriptionGroupCommand = createSubscriptionGroupCommand;
             NowLoading = new ReactiveProperty<bool>(false);
             IsLoadFailed = new ReactiveProperty<bool>(false);
+            ThemeManagerService = themeManagerService;
+
+            ThemeManagerService.ActualAppThemeChanged += _ThemeManagerService_ActualAppThemeChanged;
         }
 
         Database.NicoVideo _VideoInfo;
@@ -538,6 +541,14 @@ namespace NicoPlayerHohoema.ViewModels
             };
 
             return true;
+        }
+
+        private Services.ThemeManagerService ThemeManagerService;
+
+        private void _ThemeManagerService_ActualAppThemeChanged(object sender, EventArgs e)
+        {
+            //TODO Regenerate HTML
+            throw new NotImplementedException("Not Implemented: Regenerate HTML when theme changed");
         }
     }
 

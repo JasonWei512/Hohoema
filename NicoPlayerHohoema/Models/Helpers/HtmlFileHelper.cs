@@ -1,10 +1,13 @@
-﻿using System;
+﻿using NicoPlayerHohoema.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Prism.Ioc;
+using Windows.UI.Xaml;
 
 namespace NicoPlayerHohoema.Models.Helpers
 {
@@ -36,11 +39,13 @@ namespace NicoPlayerHohoema.Models.Helpers
 			using (var stream = await templateHtmlFileStorage.OpenAsync(FileAccessMode.Read))
 			using (var textReader = new StreamReader(stream.AsStream()))
 			{
-				var templateText = textReader.ReadToEnd();
+                var themeManagerService = Prism.PrismApplicationBase.Current.Container.Resolve<ThemeManagerService>();
+
+                var templateText = textReader.ReadToEnd();
                 descJoinedHtmlText = templateText
                     .Replace("{content}", html)
                     .Replace("http://", "https://")
-                    .Replace("{foreground-color}", App.Current.RequestedTheme == Windows.UI.Xaml.ApplicationTheme.Dark ? "#EFEFEF" : "000000");
+                    .Replace("{foreground-color}", themeManagerService.ActualAppTheme == ElementTheme.Dark ? "#EFEFEF" : "000000");
 			}
 
 

@@ -27,7 +27,8 @@ namespace NicoPlayerHohoema.ViewModels
             CommunityFollowProvider followProvider,
             CommunityProvider communityProvider,
             FollowManager followManager,
-            NiconicoFollowToggleButtonService followToggleButtonService
+            NiconicoFollowToggleButtonService followToggleButtonService,
+            ThemeManagerService themeManagerService
             )
         {
             PageManager = pageManager;
@@ -35,8 +36,10 @@ namespace NicoPlayerHohoema.ViewModels
             FollowProvider = followProvider;
             CommunityProvider = communityProvider;
             FollowToggleButtonService = followToggleButtonService;
-        }
+            ThemeManagerService = themeManagerService;
 
+            ThemeManagerService.ActualAppThemeChanged += ThemeManagerService_ActualAppThemeChanged;
+        }
 
         public string CommunityId { get; private set; }
 
@@ -352,10 +355,18 @@ namespace NicoPlayerHohoema.ViewModels
 
             return true;
         }
+
+        private ThemeManagerService ThemeManagerService;
+
+        private void ThemeManagerService_ActualAppThemeChanged(object sender, EventArgs e)
+        {
+            //TODO Regenerate HTML
+            throw new NotImplementedException("Not Implemented: Regenerate HTML when theme changed");
+        }
     }
 
 
-	public class CurrentLiveInfoViewModel : Interfaces.ILiveContent
+    public class CurrentLiveInfoViewModel : Interfaces.ILiveContent
     {
 		public string LiveTitle { get; private set; }
 		public string LiveId { get; private set; }

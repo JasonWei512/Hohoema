@@ -195,7 +195,7 @@
     <Compile Include="Models\Provider\UserProvider.cs" />
     <Compile Include="Services\ExternalAccessService.cs" />
     <Compile Include="Services\Helpers\MylistHelper.cs" />
-    <Compile Include="Services\Helpers\ThemeHelper.cs" />
+    <Compile Include="Services\ThemeManagerService.cs" />
     <Compile Include="Services\NiconicoLoginService.cs" />
     <Compile Include="Services\Notification\NotificationCacheRequestRejectedService.cs" />
     <Compile Include="Services\Notification\CheckingClipboardAndNotificationService.cs" />

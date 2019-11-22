@@ -38,8 +38,8 @@ namespace NicoPlayerHohoema.ViewModels
             RankingSettings rankingSettings,
             ActivityFeedSettings activityFeedSettings,
             AppearanceSettings appearanceSettings,
-            CacheSettings cacheSettings
-            )
+            CacheSettings cacheSettings,
+            Services.ThemeManagerService themeManagerService)
         {
             ToastNotificationService = toastService;
             NgSettings = ngSettings;
@@ -50,6 +50,7 @@ namespace NicoPlayerHohoema.ViewModels
             ActivityFeedSettings = activityFeedSettings;
             AppearanceSettings = appearanceSettings;
             CacheSettings = cacheSettings;
+            _ThemeManagerService = themeManagerService;
             
             // NG Video Owner User Id
             NGVideoOwnerUserIdEnable = NgSettings.ToReactivePropertyAsSynchronized(x => x.NGVideoOwnerUserIdEnable);
@@ -94,15 +95,13 @@ namespace NicoPlayerHohoema.ViewModels
 
             // アピアランス
 
-            ElementTheme currentTheme = ThemeHelper.LoadThemeFromSettings();
+            ElementTheme currentTheme = _ThemeManagerService.RequestedAppTheme;
             SelectedApplicationTheme = new ReactiveProperty<string>(currentTheme.ToString(), mode: ReactivePropertyMode.DistinctUntilChanged);
 
             SelectedApplicationTheme.Subscribe(async x =>
             {
-                ElementTheme theme = (ElementTheme)Enum.Parse(typeof(ElementTheme), x);
-                ThemeHelper.SaveThemeToSettings(theme);
-                await ThemeHelper.ApplyAppThemeAsync(theme);
-                ThemeHelper.ApplyTitleBarColor();
+                _ThemeManagerService.RequestedAppTheme = (ElementTheme)Enum.Parse(typeof(ElementTheme), x);
+                await _ThemeManagerService.ApplyAppThemeAsync();
 
                 // 一度だけトースト通知
                 //if (!ThemeChanged)
@@ -185,6 +184,8 @@ namespace NicoPlayerHohoema.ViewModels
         }
 
         Services.DialogService _HohoemaDialogService;
+
+        Services.ThemeManagerService _ThemeManagerService;
 
         public NotificationService ToastNotificationService { get; private set; }
         public NGSettings NgSettings { get; }

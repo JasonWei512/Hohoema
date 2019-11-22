@@ -204,6 +204,7 @@ namespace NicoPlayerHohoema
             unityContainer.RegisterType<PlayerViewManager>(new PerThreadLifetimeManager());
             unityContainer.RegisterSingleton<Services.NiconicoLoginService>();
             unityContainer.RegisterSingleton<Services.DialogService>();
+            unityContainer.RegisterSingleton<Services.ThemeManagerService>();
 
             // Models
             unityContainer.RegisterSingleton<Models.NiconicoSession>();
@@ -351,9 +352,6 @@ namespace NicoPlayerHohoema
                     coreApp.TitleBar.ExtendViewIntoTitleBar = true;
                 }
 
-                //Set title bar color, and change title bar color when theme changes
-                ThemeHelper.InitializeTitleBarColor();
-
                 // 
                 var cacheSettings = Container.Resolve<CacheSettings>();
                 Resources["IsCacheEnabled"] = cacheSettings.IsEnableCache;
@@ -365,8 +363,10 @@ namespace NicoPlayerHohoema
 
                 Container.GetContainer().RegisterInstance(ns);
 
-                // テーマ設定。Change the theme of shell before assign it to Window.Current.Content
-                (layout as FrameworkElement).RequestedTheme = ThemeHelper.LoadThemeFromSettings();
+                // テーマ設定。
+                var themeManagerService = Container.Resolve<Services.ThemeManagerService>();
+                await themeManagerService.InitializeAsync();    //Initialize ThemeManagerService
+                (layout as FrameworkElement).RequestedTheme = themeManagerService.RequestedAppTheme;    //Change content's theme before assigning it to Window.Current.Content
 
                 Window.Current.Content = layout;
 
