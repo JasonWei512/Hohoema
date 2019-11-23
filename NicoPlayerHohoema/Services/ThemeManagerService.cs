@@ -158,7 +158,12 @@ namespace NicoPlayerHohoema.Services
             return ElementTheme.Default;
         }
 
-        private ElementTheme GetActualTheme(ElementTheme givenTheme)    //Returns how givenTheme will look like based on current app theme
+        /// <summary>
+        /// Returns how <paramref name="givenTheme"/> will look like according to current app theme.
+        /// The returned value can be "light" or "dark".
+        /// </summary>
+        /// <param name="givenTheme">The given theme. Can be "light", "dark" or "default".</param>
+        private ElementTheme GetActualTheme(ElementTheme givenTheme)    
         {
             if (givenTheme == ElementTheme.Dark || givenTheme == ElementTheme.Light)
             {
@@ -183,7 +188,7 @@ namespace NicoPlayerHohoema.Services
 
         #region Events
 
-        /// <summary>Fired when the app's actual look (light or dark) changes.</summary>
+        /// <summary>Fired when the app's actual theme ("light" or "dark") changes. Use it to regenerate HTML contents and change title bar colors.</summary>
         public event EventHandler ActualAppThemeChanged;
 
         #endregion

@@ -50,7 +50,7 @@ namespace NicoPlayerHohoema.ViewModels
             ActivityFeedSettings = activityFeedSettings;
             AppearanceSettings = appearanceSettings;
             CacheSettings = cacheSettings;
-            _ThemeManagerService = themeManagerService;
+            ThemeManagerService = themeManagerService;
             
             // NG Video Owner User Id
             NGVideoOwnerUserIdEnable = NgSettings.ToReactivePropertyAsSynchronized(x => x.NGVideoOwnerUserIdEnable);
@@ -95,13 +95,13 @@ namespace NicoPlayerHohoema.ViewModels
 
             // アピアランス
 
-            ElementTheme currentTheme = _ThemeManagerService.RequestedAppTheme;
+            ElementTheme currentTheme = ThemeManagerService.RequestedAppTheme;
             SelectedApplicationTheme = new ReactiveProperty<string>(currentTheme.ToString(), mode: ReactivePropertyMode.DistinctUntilChanged);
 
             SelectedApplicationTheme.Subscribe(async x =>
             {
-                _ThemeManagerService.RequestedAppTheme = (ElementTheme)Enum.Parse(typeof(ElementTheme), x);
-                await _ThemeManagerService.ApplyAppThemeAsync();
+                ThemeManagerService.RequestedAppTheme = (ElementTheme)Enum.Parse(typeof(ElementTheme), x);
+                await ThemeManagerService.ApplyAppThemeAsync();
 
                 // 一度だけトースト通知
                 //if (!ThemeChanged)
@@ -185,7 +185,7 @@ namespace NicoPlayerHohoema.ViewModels
 
         Services.DialogService _HohoemaDialogService;
 
-        Services.ThemeManagerService _ThemeManagerService;
+        Services.ThemeManagerService ThemeManagerService;
 
         public NotificationService ToastNotificationService { get; private set; }
         public NGSettings NgSettings { get; }

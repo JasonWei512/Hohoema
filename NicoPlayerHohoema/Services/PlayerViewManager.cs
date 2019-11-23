@@ -85,7 +85,7 @@ namespace NicoPlayerHohoema.Services
             IEventAggregator eventAggregator,
             ThemeManagerService themeManagerService)
         {
-            _ThemeManagerService = themeManagerService;
+            ThemeManagerService = themeManagerService;
 
             CurrentView = ApplicationView.GetForCurrentView();
 
@@ -192,7 +192,7 @@ namespace NicoPlayerHohoema.Services
             }
         }
 
-        private ThemeManagerService _ThemeManagerService;
+        private ThemeManagerService ThemeManagerService;
 
         public INavigationService ResolveSecondaryViewPlayerNavigationService()
         {
@@ -399,8 +399,8 @@ namespace NicoPlayerHohoema.Services
                     vm = content.DataContext as HohoemaSecondaryViewFrameViewModel;
 
                     // テーマ設定
-                    _ThemeManagerService.ApplyTitleBarColorForCurrentWindow();    //Change the second window's title bar color
-                    (content as FrameworkElement).RequestedTheme = _ThemeManagerService.RequestedAppTheme;    //Change the second window's content's theme before assigning it to Window.Current.Content
+                    ThemeManagerService.ApplyTitleBarColorForCurrentWindow();    //Change the second window's title bar color
+                    (content as FrameworkElement).RequestedTheme = ThemeManagerService.RequestedAppTheme;    //Change the second window's content's theme before assigning it to Window.Current.Content
 
                     Window.Current.Content = content;
 

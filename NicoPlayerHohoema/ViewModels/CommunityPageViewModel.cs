@@ -361,7 +361,7 @@ namespace NicoPlayerHohoema.ViewModels
         private void ThemeManagerService_ActualAppThemeChanged(object sender, EventArgs e)
         {
             //TODO Regenerate HTML
-            throw new NotImplementedException("Not Implemented: Regenerate HTML when theme changed");
+            //throw new NotImplementedException("Not Implemented: Regenerate HTML when theme changed");
         }
     }
 

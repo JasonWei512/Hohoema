@@ -65,7 +65,7 @@ namespace NicoPlayerHohoema.ViewModels
             IsLoadFailed = new ReactiveProperty<bool>(false);
             ThemeManagerService = themeManagerService;
 
-            ThemeManagerService.ActualAppThemeChanged += _ThemeManagerService_ActualAppThemeChanged;
+            ThemeManagerService.ActualAppThemeChanged += ThemeManagerService_ActualAppThemeChanged;
         }
 
         Database.NicoVideo _VideoInfo;
@@ -545,10 +545,10 @@ namespace NicoPlayerHohoema.ViewModels
 
         private Services.ThemeManagerService ThemeManagerService;
 
-        private void _ThemeManagerService_ActualAppThemeChanged(object sender, EventArgs e)
+        private void ThemeManagerService_ActualAppThemeChanged(object sender, EventArgs e)
         {
             //TODO Regenerate HTML
-            throw new NotImplementedException("Not Implemented: Regenerate HTML when theme changed");
+            //throw new NotImplementedException("Not Implemented: Regenerate HTML when theme changed");
         }
     }
 
