@@ -453,6 +453,7 @@
 
                                 <uwptoolkit:Expander Margin="0 16 0 8"
                                                      HorizontalContentAlignment="Left"
+                                                     Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
                                                      >
                                     <uwptoolkit:Expander.HeaderTemplate>
                                         <DataTemplate>

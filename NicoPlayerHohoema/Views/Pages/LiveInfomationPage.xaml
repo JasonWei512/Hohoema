@@ -453,6 +453,7 @@
                             <uwptoolkit:Expander IsExpanded="False"
                                                  Visibility="Collapsed"
                                       x:Name="DescriptionHyperlinkItems"
+                                                 Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
                                                  >
                                 <uwptoolkit:Expander.HeaderTemplate>
                                     <DataTemplate>

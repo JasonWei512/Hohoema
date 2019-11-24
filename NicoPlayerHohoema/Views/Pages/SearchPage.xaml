@@ -340,6 +340,7 @@
                                                   toolkit:DockPanel.Dock="Bottom"
                                                       Margin="0 8 0 0"
                                                       HorizontalContentAlignment="Left"
+                                                      Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}"
                                                       >
                             </uwpControls:Expander>
 
