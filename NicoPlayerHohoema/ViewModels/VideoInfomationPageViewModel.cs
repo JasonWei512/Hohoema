@@ -545,10 +545,30 @@ namespace NicoPlayerHohoema.ViewModels
 
         private Services.ThemeManagerService ThemeManagerService;
 
-        private void ThemeManagerService_ActualAppThemeChanged(object sender, EventArgs e)
+        private async void ThemeManagerService_ActualAppThemeChanged(object sender, EventArgs e)
         {
-            //TODO Regenerate HTML
-            //throw new NotImplementedException("Not Implemented: Regenerate HTML when theme changed");
+            //Regenerate html contents according to app's actual theme
+
+            Uri regeneratedHtmlFileUri;
+
+            if(DescriptionHtmlFileUri != null)
+            {
+                regeneratedHtmlFileUri = await Models.Helpers.HtmlFileHelper.RegenerateHtml(VideoId);
+
+                if (regeneratedHtmlFileUri != null)
+                {
+                    DescriptionHtmlFileUri = regeneratedHtmlFileUri;
+                    RaisePropertyChanged(nameof(DescriptionHtmlFileUri));
+                }
+                else
+                {
+                    await UpdateVideoDescription();
+                }
+            }
+            else
+            {
+                await UpdateVideoDescription();
+            }
         }
     }
 

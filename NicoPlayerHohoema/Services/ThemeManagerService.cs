@@ -69,7 +69,7 @@ namespace NicoPlayerHohoema.Services
 
         private async void WindowsSystemThemeChanged(UISettings sender, object args)    //This may be called from a non-UI thread, so here I use a diapatcher.
         {
-            if (LoadThemeFromSettings() == ElementTheme.Default)
+            if (RequestedAppTheme == ElementTheme.Default)
             {
                 await CoreApplication.MainView.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                 {

@@ -63,5 +63,61 @@ namespace NicoPlayerHohoema.Models.Helpers
 			// 
 			return new Uri($"ms-appdata:///temp/{VideDescHTMLFolderName}/{filename}");
 		}
+
+        public static async Task<Uri> RegenerateHtml(string id)    
+        {
+            const string VideDescHTMLFolderName = "html";
+            const string darkStyle = @"
+        body {
+            line-height: 1.5;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: #EFEFEF;
+        }";
+            const string lightStyle = @"
+        body {
+            line-height: 1.5;
+            font-size: 14px;
+            letter-spacing: 1px;
+            color: 000000;
+        }";
+
+            try    //Open the exsisting html file, and replace the foreground color part according to app's actual theme
+            {
+                var outputFolder = await ApplicationData.Current.TemporaryFolder.GetFolderAsync(VideDescHTMLFolderName);
+                var filename = id + ".html";
+                var savedVideoDescHtmlFile = await outputFolder.GetFileAsync(filename);
+                string regeneratedHtmlContent = "";
+
+                using (var stream = await savedVideoDescHtmlFile.OpenAsync(FileAccessMode.Read))
+                using (var textReader = new StreamReader(stream.AsStream()))
+                {
+                    var themeManagerService = Prism.PrismApplicationBase.Current.Container.Resolve<ThemeManagerService>();
+                    var savedText = textReader.ReadToEnd();
+
+                    if (themeManagerService.ActualAppTheme == ElementTheme.Light)
+                    {
+                        regeneratedHtmlContent = savedText.Replace(darkStyle, lightStyle);
+                    }
+                    else
+                    {
+                        regeneratedHtmlContent = savedText.Replace(lightStyle, darkStyle);
+                    }
+                }
+
+                savedVideoDescHtmlFile = await outputFolder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
+                using (var stream = await savedVideoDescHtmlFile.OpenStreamForWriteAsync())
+                using (var writer = new StreamWriter(stream))
+                {
+                    writer.Write(regeneratedHtmlContent);
+                }
+
+                return new Uri($"ms-appdata:///temp/{VideDescHTMLFolderName}/{filename}");
+            }
+            catch
+            {
+                return null;    //Returns null if html file doesn't exist
+            }
+        }
 	}
 }
